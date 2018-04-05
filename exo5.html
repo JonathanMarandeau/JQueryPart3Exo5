@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="../jquery-3.3.1.min.js"></script>
+    <title>Exercice 5</title>
+    <style>
+      #square{
+        width: 50px;
+        height: 50px;
+        background-color: blue;
+      }
+      body{
+        margin: 0px;
+      }
+    </style>
+  </head>
+  <body>
+      <div id="square"></div>
+      <input type="text" name="text_field" value="" id='text'>
+    <script>
+     $(function(){
+        //Je détermine la largeur de la fenetre
+        var widthWindow = $(window).width();
+        //Je determine la longueur de la fenetre
+        var heightWindow = $(window).height();
+        //Fonction lorsque l'on appuie sur une touche
+        $('#text').keydown(function(e){
+          //Je determine la position horizontal de la div
+          var squarePositionX = $('#square').offset().left;
+          //Je determine la position vertical de la div
+          var squarePositionY = $('#square').offset().top;
+          switch (e.keyCode){//On donne une valeur a une touche du clavier avec e.keyCode
+            case 37://Fleche de gauche
+            if(squarePositionX <= 0){
+              $('#square').css('margin-left', widthWindow-50);
+            } else{
+              $('#square').css('margin-left', '-=10px');
+            }
+            break;
+            case 39://Fleche de droite
+            if(squarePositionX >= (widthWindow-50)){
+              $('#square').css('margin-left', '0');
+            } else{
+              $('#square').css('margin-left', '+=10px');
+            }
+            break;
+            case 38://Fleche du haut
+            if(squarePositionY <= 0){
+              $('#square').css('margin-top', heightWindow-50);
+            } else{
+              $('#square').css('margin-top', '-=10px');
+            }
+            break;
+            case 40://touche bas
+            if(squarePositionY >= (heightWindow-50)){
+              $('#square').css('margin-top', '0');
+            } else {
+              $('#square').css('margin-top', '+=10px');
+            }
+            break;
+            }
+        });
+      });
+    </script>
+  </body>
+</html>
